@@ -1,5 +1,22 @@
 ```
+监听拦截系统导航栏返回按钮事件：（实现过程如以下代码所示）
 
+1：我们只需要在当前UIViewController重载enableListenerLeftBackButtonEvent属性且设置为true，
+
+2：通过block回调回去返回按钮事件
+
+```
+ override var enableListenerLeftBackButtonEvent: Bool {
+        return true
+    }
+    
+    
+ leftBackButtonEventHandler = { [weak self] in
+
+            FCLog("导航栏返回按钮做业务处理")
+        }
+```
+```
 private protocol NavigationBarLeftBackButtonDelegate {
     var shouldPopOnBackButtonPress: Bool { get }
 }
